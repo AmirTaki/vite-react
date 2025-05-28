@@ -7,14 +7,17 @@ export function UserProfile ({username, age, isLoggedIn, callMe}){
 
     callMe()
     return(
-        <div id= "user-profile">
-            <UserUsername username = {username}/>
+        <>
             <b>Age : </b>
             <span>{age}</span>
-            
-            <UserFavoriteFoods />
-            {String(isLoggedIn)}
-        </div>
+            <>
+                <UserUsername username = {username}/>
+                <UserFavoriteFoods />
+
+            </>
+
+            {/* {String(isLoggedIn)} */}
+        </>
 
     )
 }

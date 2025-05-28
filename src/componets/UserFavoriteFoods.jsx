@@ -16,4 +16,4 @@ export function UserFavoriteFoods (){
             </ul>
         </>
     )
-}
+}Fragments

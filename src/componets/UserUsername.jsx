@@ -1,9 +1,11 @@
+import { Fragment } from "react";
+
 export function UserUsername (props) {
     // console.log(props)
     return(
-        <div>
+        <Fragment>
             <b>Username:</b>
             <span>{props.username}</span>
-        </div>
+        </Fragment>
     )
 }
