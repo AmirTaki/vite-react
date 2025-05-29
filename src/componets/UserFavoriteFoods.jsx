@@ -1,4 +1,5 @@
 import { createElement } from "react"
+import styles from "./users.module.scss"
 
 export function UserFavoriteFoods (){
     // return createElement("div", null, <div>UserFavoriteFoods</div>)
@@ -7,7 +8,11 @@ export function UserFavoriteFoods (){
         "section", 
         null, 
         <>
-            <span>Favorite Foods :</span>
+            {/* <span className={styles.foodsTitle } */}
+            <span className={styles['foods-title'] }
+            >
+                Favorite Foods :
+            </span>
             <br/>
             <ul>
                 <li>Sushi</li>
