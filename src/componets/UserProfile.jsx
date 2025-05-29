@@ -9,7 +9,7 @@ export function UserProfile ({username, age, isLoggedIn, callMe}){
     return(
         <>
             <b>Age : </b>
-            <span>{age}</span>
+            <span>{age}</span> 
             <>
                 <UserUsername username = {username}/>
                 <UserFavoriteFoods />
