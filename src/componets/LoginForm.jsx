@@ -1,7 +1,8 @@
 export function LoginForm() {
     return(
         <form
-            // method = "POST" action="/api/login"
+
+        // method = "POST" action="/api/login"
             onSubmit={
                 (e) => {
                     e.preventDefault()
