@@ -1,7 +1,6 @@
 export function LoginForm() {
     return(
         <form
-
         // method = "POST" action="/api/login"
             onSubmit={
                 (e) => {
@@ -9,7 +8,7 @@ export function LoginForm() {
                     const formData = new FormData(e.target)
                     const username = formData.get("username")
                     const password = formData.get('password')
-                    fetch("http://localhost:5173/api/login",{
+                    fetch("http://localhost:5174/api/login",{
                         body : {
                             username,
                             password,
