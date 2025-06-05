@@ -1,3 +1,4 @@
+import { func } from "prop-types";
 import { useState, useEffect } from "react"
 
 
@@ -12,21 +13,19 @@ export default function App(){
   },[sync])
 
   useEffect(()=>{
-    fetch("https://jsonplaceholder.typicode.com/users",{
-      method : "GET",
-    }).then((response)=>{
-      // console.log(response);
-      return response.json();
-   
-    }).then((data)=>{
-      console.log(data);
-
-    }).catch((err)=>{
-      console.log(err);
-      console.log("Invalid Endpoint")
-    })
+    async function fetchUsers() {
+      try{
+        const respose = await fetch("https://jsonplaceholder.typicode.com/users");
+        const json = await respose.json();
+        console.log(json)
+      }
+      catch(err){
+        console.log(err);
+      }
+    }
+    fetchUsers()
   })
- 
+
   return(
     <>
       <div>You Clicked the button {counter} times</div>
