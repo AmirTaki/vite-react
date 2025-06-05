@@ -5,7 +5,6 @@ export function UserDetails ({user, setUsers}){
     const [isEditing, setIsEditing] = useState(false);
     const [username, setUsername] = useState(user.username)
     const [email, setEmail] = useState (user.email)
-    console.log(isEditing);
     return(
         <div>
             <div>
