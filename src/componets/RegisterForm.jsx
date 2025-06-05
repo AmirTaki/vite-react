@@ -2,19 +2,23 @@ import { useState } from "react"
 
 export function RegisterForm(){
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [displayName, setDisplayName] = useState("");
-    const isDisabld = !username || !password || !displayName;
+    const[formFields, setFormFields] = useState({
+        username : "",
+        password : "",
+        displayName : "",
+        isDisabld : false,
+    })
+    console.log(formFields);
     return(
         <form>
             <div>
                 <label htmlFor="username">Username</label>
                 <input type="text" 
                     id = "username"
-                    value = {username} 
+                    value = {formFields.username} 
                     onChange={(e)=>{
-                        setUsername(e.target.value);
+                        // setFormFields({username : e.target.value});
+                        setFormFields((currentState) => ({...currentState, username : e.target.value}))
                     }}
                 />
             </div>
@@ -22,9 +26,13 @@ export function RegisterForm(){
                 <label htmlFor="password">Passoword</label>
                 <input type="password" 
                     id = "password" 
-                    value = {password}
+                    value = {formFields.password}
                     onChange={(e)=>{
-                        setPassword(e.target.value);
+                        // setFormFields({password : e.target.value});
+                        setFormFields((currentState)=> ({
+                            ...currentState,
+                            password : e.target.value
+                        }))
                     }}
                 />
             </div>
@@ -32,22 +40,26 @@ export function RegisterForm(){
                 <label htmlFor="displayName">Display Name</label>
                 <input type="text" 
                     id = "displayName" 
-                    value = {displayName} 
+                    value = {formFields.displayName} 
                     onChange={(e)=>{
-                        setDisplayName(e.target.value);
+                        // setFormFields({displayName : e.target.value});
+                        setFormFields((currentState)=>({
+                            ...currentState,
+                            displayName : e.target.value
+                        }))
                     }}
                 />
             </div>
             <div>
-                <span>Username : {username}</span>
+                <span>Username : {formFields.username}</span>
             </div>
             <div>
-                <span>Password : {password}</span>
+                <span>Password : {formFields.password}</span>
             </div>
             <div>
-                <span>Display Name : {displayName}</span>
+                <span>Display Name : {formFields.displayName}</span>
             </div>
-            <button disabled={isDisabld}>Sign Up</button>
+            <button disabled={formFields.isDisabld}>Sign Up</button>
         </form>
     )
 }
