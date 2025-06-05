@@ -22,6 +22,7 @@ export default function App(){
      
         const json = await respose.json();
         console.log(json)
+        console.log(controller.signal)
       }
       catch(err){
         console.log(err);
@@ -30,6 +31,7 @@ export default function App(){
     fetchUsers()
     return () => {
       controller.abort()
+      console.log(controller.signal)
     }
   })
 
