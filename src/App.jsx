@@ -22,8 +22,17 @@ export default function App(){
               userId : 1, 
               title : blogPostData.title,
               body : blogPostData.body
-            })
+            }),
+            headers : {
+              "Content-type" : "application/json; charset=UTF-8"
+            }
           })
+          .then((response)=> response.json())
+          .then((data) => {
+            console.log("Success!");
+            console.log(data);
+          })   
+          .catch((err)=>console.log(err))
         }
       }}
     >
