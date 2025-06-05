@@ -1,4 +1,5 @@
 import { LoginForm } from "./componets/LoginForm";
+import { RegisterForm } from "./componets/RegisterForm";
 
 export default function App(){
   
@@ -8,7 +9,7 @@ export default function App(){
   })
   return(
     <>
-      <LoginForm />
+      <RegisterForm />
     </>
   )
 }
