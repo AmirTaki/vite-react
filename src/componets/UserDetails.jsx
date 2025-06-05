@@ -9,29 +9,33 @@ export function UserDetails ({user, setUsers}){
     return(
         <div>
             <div>
+                {/* edit */}
                 <button
-                    // onClick={()=>{
-                    //     setIsEditing(true);
-                    // }}
                     onClick={()=>{
                         setIsEditing((currentState) => !currentState);
                     }}
                 >    
-                    Edit</button>
-                <button>Delete</button>
+                    Edit
+                </button>
+                {/* delete */}
                 <button
-                    onClick={()=> {
-                        setUsers((currentUserState)=>{
-                            return currentUserState.map((currentUser)=>{
-                                if(currentUser.id === user.id){
-                                    return {...currentUser, username : username, email : email};
-                                }
-                                else return currentUser;
-                            })
-                        })
-                        setIsEditing(false);
-                    }}
-                >save</button>
+                >
+                    Delete
+                </button>
+                {/* update : save */}
+                {isEditing && (
+                    <button
+                        onClick={()=>{
+                            setUsers(currentState => 
+                                currentState.map((currentUser) => (
+                                    currentUser.id === user.id  ? {...currentUser, username, email} : currentUser
+                                ))    
+                            )
+                            setIsEditing(false)
+                        }}
+                        
+                    >save</button>
+                )}
             </div>
             <div>
                 <b>ID : </b> 
