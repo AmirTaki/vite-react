@@ -13,9 +13,13 @@ export default function App(){
   },[sync])
 
   useEffect(()=>{
+    const controller = new AbortController();
     async function fetchUsers() {
       try{
-        const respose = await fetch("https://jsonplaceholder.typicode.com/users");
+        const respose = await fetch("https://jsonplaceholder.typicode.com/users",
+          {signal: controller.signal}
+        );
+     
         const json = await respose.json();
         console.log(json)
       }
@@ -24,6 +28,9 @@ export default function App(){
       }
     }
     fetchUsers()
+    return () => {
+      controller.abort()
+    }
   })
 
   return(
