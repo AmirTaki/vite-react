@@ -17,7 +17,7 @@ export default function App(){
   return(
     <>
       {users.map((user)=>(
-        <UserDetails key = {user.id} users = {user} setUsers={setUsers}/>
+        <UserDetails key = {user.id} user = {user} setUsers = {setUsers}/>
       ))}
     </>
   )

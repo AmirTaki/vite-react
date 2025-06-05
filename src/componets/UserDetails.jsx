@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import { useState } from "react";
 
-export function UserDetails ({users, setUsers}){  
+export function UserDetails ({user, setUsers}){  
     const [isEditing, setIsEditing] = useState(false);
-    const [username, setUsername] = useState(users.username)
-    const [email, setEmail] = useState (users.email)
+    const [username, setUsername] = useState(user.username)
+    const [email, setEmail] = useState (user.email)
     console.log(isEditing);
     return(
         <div>
@@ -20,12 +20,22 @@ export function UserDetails ({users, setUsers}){
                     Edit</button>
                 <button>Delete</button>
                 <button
-                    onClick={()=> console.log(users)}
+                    onClick={()=> {
+                        setUsers((currentUserState)=>{
+                            return currentUserState.map((currentUser)=>{
+                                if(currentUser.id === user.id){
+                                    return {...currentUser, username : username, email : email};
+                                }
+                                else return currentUser;
+                            })
+                        })
+                        setIsEditing(false);
+                    }}
                 >save</button>
             </div>
             <div>
                 <b>ID : </b> 
-                <span>{users.id}</span>
+                <span>{user.id}</span>
                 <br/>
                 <b>Username : </b>
                 {isEditing ? (
@@ -37,7 +47,7 @@ export function UserDetails ({users, setUsers}){
                             setUsername(e.target.value)
                         }}
                     />) : (
-                    <span>{users.username}</span>
+                    <span>{user.username}</span>
                 )}
                 <br/>
                 <b>email :</b> 
@@ -51,7 +61,7 @@ export function UserDetails ({users, setUsers}){
                         }}
                     />                    
                 ) : (
-                    <span>{users.email}</span>
+                    <span>{user.email}</span>
                 )} 
             </div>
         </div>
